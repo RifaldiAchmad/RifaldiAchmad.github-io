@@ -1,0 +1,67 @@
+# Nama workflow yang akan muncul di tab Actions
+name: Build and Deploy Jekyll Site to Pages
+
+# Pemicu: Kapan workflow ini harus berjalan?
+on:
+  # Berjalan saat ada 'push' ke branch 'main' atau 'master'
+  push:
+    branches: ["main", "master"]
+  # Memungkinkan Anda menjalankan workflow ini secara manual dari tab Actions
+  workflow_dispatch:
+
+# Izin yang dibutuhkan workflow untuk bisa deploy ke GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Pengaturan agar hanya ada satu proses deploy yang berjalan pada satu waktu
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+# Langkah-langkah (jobs) yang akan dijalankan
+jobs:
+  # Satu job bernama 'build'
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Mengambil kode dari repositori Anda
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      # 2. Setup Ruby dan Bundler (diperlukan untuk Jekyll)
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0' # Versi Ruby, '3.0' aman untuk Minimal Mistakes
+          bundler-cache: true # Menggunakan cache agar proses build lebih cepat
+          
+      # 3. Setup GitHub Pages
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+        
+      # 4. Build situs Jekyll
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+          
+      # 5. Unggah hasil build (artifact)
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+
+  # Satu job bernama 'deploy'
+  deploy:
+    # Job ini butuh job 'build' selesai dulu
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # 1. Deploy ke GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
