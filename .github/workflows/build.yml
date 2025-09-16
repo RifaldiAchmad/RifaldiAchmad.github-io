@@ -50,7 +50,7 @@ jobs:
           
       # 5. Unggah hasil build (artifact)
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
 
   # Satu job bernama 'deploy'
   deploy:
