@@ -76,10 +76,10 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:emailanda@contoh.com" # Ganti dengan email Anda
+      url: "rifaldiaf1@gmail.com" # Ganti dengan email Anda
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://linkedin.com/in/username-linkedin-anda" # Ganti dengan URL LinkedIn Anda
+      url: "https://linkedin.com/in/rifaldiachmad" # Ganti dengan URL LinkedIn Anda
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/RifaldiAchmad"
