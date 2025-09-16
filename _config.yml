@@ -13,25 +13,33 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: MM
-email:
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-twitter_username: username
-github_username: username
-minimal_mistakes_skin: default
+
+# [REVISI] Judul, URL, dan deskripsi situs Anda.
+# -----------------------------------------------
+title: "Portofolio Rifaldi Achmad"
+description: >- # Deskripsi ini akan muncul di Google
+  Portofolio Data Scientist yang menampilkan proyek-proyek dalam analisis data,
+  machine learning, dan visualisasi data.
+url: "https://RifaldiAchmad.github.io" # [PENTING] URL situs Anda, tanpa / di akhir
+baseurl: "" # Kosongkan untuk situs tipe user (username.github.io)
+repository: "RifaldiAchmad/RifaldiAchmad.github.io" # [PENTING] Memperbaiki error build sebelumnya
+
+# [REVISI] Skin theme dan username media sosial utama
+# -----------------------------------------------
+minimal_mistakes_skin: "air" # "air" adalah skin yang populer dan bersih. Pilihan lain: "dark", "default", "dirt"
 search: true
+github_username: "RifaldiAchmad"
+# twitter_username: username # Tidak perlu diisi jika sudah ada di bagian author links
 
 # Build settings
+# -----------------------------------------------
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Jakarta # [REVISI] Mengatur zona waktu Indonesia
 
 include:
   - _pages
@@ -49,6 +57,7 @@ include:
 #   - vendor/ruby/
 
 # Plugins (previously gems:)
+# -----------------------------------------------
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
@@ -57,36 +66,37 @@ plugins:
   - jemoji
   - jekyll-include-cache
 
+# [REVISI] Informasi personal Anda akan muncul di sidebar
+# -----------------------------------------------
 author:
-  name   : "First Lastname"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  name: "Rifaldi Achmad"
+  avatar: "/assets/images/bio-photo.jpg" # Pastikan Anda sudah upload foto dengan nama ini
+  bio: "Seorang Data Scientist yang antusias dalam menemukan cerita dan solusi dari data."
+  location: "Indonesia"
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:emailanda@contoh.com" # Ganti dengan email Anda
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/username-linkedin-anda" # Ganti dengan URL LinkedIn Anda
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/RifaldiAchmad"
 
+# [REVISI] Link di bagian bawah halaman (footer)
+# -----------------------------------------------
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/username-linkedin-anda" # Ganti dengan URL LinkedIn Anda
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/RifaldiAchmad"
 
+# [REVISI] Pengaturan default untuk semua post dan halaman
+# -----------------------------------------------
 defaults:
   # _posts
   - scope:
@@ -96,17 +106,19 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
+      comments: false # Komentar bisa dinonaktifkan untuk portofolio
       share: true
       related: true
   # _pages
   - scope:
-      path: "_pages"
+      path: "" # Mengubah dari "_pages" agar berlaku untuk semua halaman (termasuk yg di root)
       type: pages
     values:
       layout: single
       author_profile: true
 
+# Pengaturan untuk arsip berdasarkan kategori dan tag
+# -----------------------------------------------
 category_archive:
   type: liquid
   path: /categories/
