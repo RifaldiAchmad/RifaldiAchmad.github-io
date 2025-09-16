@@ -26,21 +26,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 1. Mengambil kode dari repositori Anda
+      # 1. Mengambil kode dari repositori Anda (versi diperbarui ke v4)
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       # 2. Setup Ruby dan Bundler (diperlukan untuk Jekyll)
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0' # Versi Ruby, '3.0' aman untuk Minimal Mistakes
+          ruby-version: '3.0'
           bundler-cache: true # Menggunakan cache agar proses build lebih cepat
           
-      # 3. Setup GitHub Pages
+      # 3. Setup GitHub Pages (versi diperbarui ke v5)
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5
         
       # 4. Build situs Jekyll
       - name: Build with Jekyll
@@ -48,7 +48,7 @@ jobs:
         env:
           JEKYLL_ENV: production
           
-      # 5. Unggah hasil build (artifact)
+      # 5. Unggah hasil build (artifact) (versi sudah benar di v3)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
@@ -61,7 +61,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # 1. Deploy ke GitHub Pages
+      # 1. Deploy ke GitHub Pages (versi diperbarui ke v4)
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
