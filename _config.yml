@@ -66,6 +66,26 @@ plugins:
   - jemoji
   - jekyll-include-cache
 
+# -----------------------------------------------
+# Memuat file Sass kustom Anda
+defaults:
+  - scope:
+      path: ""
+    values:
+      sitemap: false
+  - scope:
+      path: "assets/css"
+    values:
+      sitemap: false
+  - scope:
+      path: "_sass"
+    values:
+      sitemap: false
+  - scope:
+      path: "assets/js"
+    values:
+      sitemap: false
+
 # [REVISI] Informasi personal Anda akan muncul di sidebar
 # -----------------------------------------------
 author:
