@@ -1,0 +1,30 @@
+/* _sass/my-styles.scss */
+
+// -- Mengubah Skema Warna Dasar --
+
+// Warna teks utama
+$text-color: #333;
+
+// Warna latar belakang halaman
+$background-color: #f9f9f9;
+
+// Warna link utama
+$link-color: #007bff;
+
+// Warna link saat disentuh mouse (hover)
+$link-color-hover: #0056b3;
+
+
+// -- Mengubah Font --
+
+// Mengganti font utama untuk semua teks
+$sans-serif: "Roboto", "Helvetica", "Arial", sans-serif;
+
+// Mengganti font untuk judul-judul
+$heading-font-family: "Montserrat", sans-serif;
+
+
+// -- Mengubah Ukuran Elemen --
+
+// Mengubah lebar maksimum konten agar tidak terlalu lebar di layar besar
+$max-width: 1100px;
